@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    background-color: black;
+    grid-template-rows: auto;
+    /* 10 Grid coluumns */
+    /* grid-template-columns: auto auto auto auto auto auto auto; */
+    /* grid-template-columns: 70px 100px 150px 100px 150px 100px 150px 100px 150px ; */
+    grid-template-columns: 10% 15% 15%  15% 15% 15% 15%;
+    padding: 1px;
+    gap: 1px;
+
+}
+
+.grid-container > div {
+    background-color: aquamarine;
+    padding: 2px;
+}

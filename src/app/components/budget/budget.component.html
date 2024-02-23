@@ -1,0 +1,36 @@
+<div class="grid-container">
+  <div>
+    {{ month }}
+  </div>
+
+  <!-- year 1 -->
+  <div>
+    <button cell-direction="categories" (click)="onClick($event)">
+      {{ categories }}
+    </button>
+  </div>
+  <div class="sumDiv year1">
+    <input type="number" value="{{ amount }}" (input)="calculateSum()" />
+  </div>
+
+  <!-- year 2 -->
+  <div>
+    <button cell-direction="categories" (click)="onClick($event)">
+      {{ categories }}
+    </button>
+  </div>
+  <div class="sumDiv year2">
+    <input type="number" value="{{ amount }}" (input)="calculateSum()" />
+  </div>
+
+  <!-- year 3 -->
+
+  <div>
+    <button cell-direction="categories" (click)="onClick($event)">
+      {{ categories }}
+    </button>
+  </div>
+  <div class="sumDiv year3">
+    <input type="number" value="{{ amount }}" (input)="calculateSum()" />
+  </div>
+</div>
