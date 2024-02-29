@@ -65,6 +65,10 @@ export class AppComponent implements OnInit {
   salary: number = 0;
   annualIncome: number = 0;
   total_Y1 = 0;
+  balance_Y1 = 0;
+  balance_Y2 = 0;
+  balance_Y3 = 0;
+
 
   calculateAnnualIncome() {
     // Assuming salary is in months, multiply it by 12 to get annual income
@@ -75,13 +79,26 @@ export class AppComponent implements OnInit {
     return this.annualIncome - this.total_Y1;
   }
 
-  yearOneChanged($event: number) {
-    console.log($event, '=> de logged one');
+  // yearOneChanged($event: number) {
+  //   console.log($event, '=> de logged one');
+  // }
+
+  yearChanged(balance: number, year: number) {
+    switch (year) {
+      case 1:
+        this.balance_Y1 = balance;
+        break;
+      case 2:
+        this.balance_Y2 = balance;
+        break;
+      case 3:
+        this.balance_Y3 = balance;
+        break;
     
   }
 
 }
 
-
+}
 
 
