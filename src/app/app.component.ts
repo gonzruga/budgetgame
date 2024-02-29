@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 interface FormAndValue {
   label: string;
@@ -11,7 +12,11 @@ interface FormAndValue {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  
+  constructor() {}
+  
   title: string = 'App Component Title';
+
   akiba =0;
   wekeza=0;
   total = 0;
@@ -56,6 +61,27 @@ export class AppComponent implements OnInit {
     console.log($event.target.value);
     
   }
+
+  salary: number = 0;
+  annualIncome: number = 0;
+  total_Y1 = 0;
+
+  calculateAnnualIncome() {
+    // Assuming salary is in months, multiply it by 12 to get annual income
+    this.annualIncome = this.salary * 12;
+  }
+
+  calculateBalanceY1() {
+    return this.annualIncome - this.total_Y1;
+  }
+
+  yearOneChanged($event: number) {
+    console.log($event, '=> de logged one');
+    
+  }
+
 }
+
+
 
 

@@ -17,10 +17,35 @@
 
 <div style="display: inline-flex; margin-top: 10px; padding: 3px; gap: 10px">
   <div>Monthly Salary</div>
-  <input id="salary" value="0" />
+  <input
+    type="number"
+    id="salary"
+    [(ngModel)]="salary"
+    (input)="calculateAnnualIncome()"
+  />
 
-  <div>Annual Salary</div>
-  <input id="salary_annual" value="0" />
+  <div>
+    <p id="annual_income">
+      Annual Income: {{ annualIncome | currency : "TZS" : true }}
+    </p>
+  </div>
+</div>
+
+<div style="display: inline-flex; margin-top: 10px; padding: 3px; gap: 10px">
+  <div>Total Year 1</div>
+  <input id="total_Y1" [(ngModel)]="total_Y1" value="0" />
+  <div>Balance Y1</div>
+  <div>{{ calculateBalanceY1() }}</div>
+
+  <div>Total Year 2</div>
+  <input id="total_Y2" value="0" />
+  <div>Balance Y2</div>
+  <!-- <div>{{ balance_Y2 }}</div> -->
+
+  <div>Total Year 3</div>
+  <input id="total_Y3" value="0" />
+  <div>Balance Y3</div>
+  <!-- <div>{{ balance_Y3 }}</div> -->
 </div>
 
 <div class="grid-container">
@@ -42,6 +67,7 @@
 </app-budget>
 
 <app-budget
+(yearOneChanged)="yearOneChanged($event)"
   id="febBgt"
   [month]="'February'"
   [categories]="'----'"
@@ -98,17 +124,6 @@
   [amount]="'0'"
 >
 </app-budget>
-
-<div style="display: inline-flex; margin-top: 10px; padding: 3px; gap: 10px">
-  <div>Total Year 1</div>
-  <input id="total_Y1" value="0" />
-
-  <div>Total Year 2</div>
-  <input id="total_Y2" value="0" />
-
-  <div>Total Year 3</div>
-  <input id="total_Y3" value="0" />
-</div>
 
 <h4>YOUR ANNUAL BUDGET</h4>
 <div class="budget-template">

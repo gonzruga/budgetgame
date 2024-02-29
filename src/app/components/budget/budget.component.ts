@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-budget',
@@ -10,14 +10,23 @@ export class BudgetComponent {
 
   items = ['Akiba', 'Wekeza', 'Ujenzi', 'Harusi', 'Msiba', 'Manunuzi']
 
+  annualIncome1: number = 0;
+  annualIncome2: HTMLInputElement | null = null;
+
   totalCalc_Y1: number = 0;
   grandTotal_Y1: HTMLInputElement | null = null;
+  balance_Y1 : number = 0;
 
   totalCalc_Y2: number = 0;
   grandTotal_Y2: HTMLInputElement | null = null;
+  balance_Y2 : number = 0;
 
   totalCalc_Y3: number = 0;
   grandTotal_Y3: HTMLInputElement | null = null;
+  balance_Y3 : number = 0;
+
+  @Output()
+  yearOneChanged = new EventEmitter<number>();
 
   @Input()
   color!: string;
@@ -49,6 +58,7 @@ export class BudgetComponent {
   calculateSum() {
     console.log("SUM TRIGGERED");
     this.totalCalc_Y1 = this.totalCalc_Y2 = this.totalCalc_Y3 = 0;
+    // this.annualIncome = document.getElementById('annual_income');
 
     // Assuming 'total' is the id of the element where you want to display the sum
     this.grandTotal_Y1 = <HTMLInputElement>document.getElementById('total_Y1');
@@ -70,6 +80,9 @@ export class BudgetComponent {
     
                 // Add the numeric value of the input to the totalCalc
                 this.totalCalc_Y1 += +input.value;
+
+                this.balance_Y1 =  this.totalCalc_Y1
+                this.yearOneChanged.emit(this.balance_Y1);
             }
     });
 
@@ -107,5 +120,14 @@ export class BudgetComponent {
     this.grandTotal_Y3.value = String(this.totalCalc_Y3);
 }
 
+
+// calculateBalance() {
+//   this.balance_Y1 = this.balance_Y1 = this.balance_Y1 = 0;
+
+//   this.balance_Y1 = this.grandTotal_Y1 - document.getElementById('total_Y1')
+
+
+
+// }
 
 }
